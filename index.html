@@ -603,17 +603,73 @@ footer a{color:var(--gold-mid);text-decoration:none;}
 .modal-close:hover{background:#2c2920;}
 
 /* ── MOBILE ── */
-@media(max-width:640px){
-  .form-card{padding:32px 22px;}
-  .profile-box{flex-direction:column;text-align:center;padding:36px 24px;}
-  .profile-photo{margin:0 auto;}
-  .profile-tags{justify-content:center;}
-  .guarantee-row{grid-template-columns:1fr;}
-  .float-wrap{bottom:16px;right:14px;}
+@media(max-width:768px){
+
+  /* Hero */
+  .hero{ padding:70px 20px 100px; }
+  .hero-title{ font-size:clamp(32px,9vw,52px); letter-spacing:-.02em; }
+  .hero-sub{ font-size:15px; }
+  .hero-btns{ flex-direction:column; align-items:center; gap:10px; }
+  .btn-dark, .btn-kakao-hero{ width:100%; max-width:320px; justify-content:center; font-size:15px; padding:16px 24px; }
+
+  /* Stats */
+  .stats-inner{ grid-template-columns:repeat(2,1fr); gap:24px; }
+  .stat-num{ font-size:28px; }
+
+  /* Section */
+  .section-inner{ padding:72px 20px; }
+  .s-title{ font-size:clamp(22px,6vw,32px); }
+  .s-desc{ font-size:14px; margin-bottom:32px; }
+
+  /* Pain grid */
+  .pain-grid{ grid-template-columns:1fr; gap:12px; }
+  .pain-card{ padding:22px 18px; }
+
+  /* Solution grid */
+  .sol-grid{ grid-template-columns:repeat(2,1fr); gap:12px; }
+  .sol-card{ padding:24px 16px; }
+  .sol-num{ font-size:40px; }
+
+  /* Chat */
+  .chat-window{ max-width:100%; }
+  .bubble{ max-width:82%; font-size:13px; }
+
+  /* Review */
+  .review-grid{ grid-template-columns:1fr; gap:14px; }
+  .review-card{ padding:22px 18px; }
+
+  /* Profile */
+  .profile-box{
+    flex-direction:column;text-align:center;
+    padding:32px 20px; gap:28px;
+  }
+  .profile-photo{ margin:0 auto; width:120px; height:120px; font-size:40px; }
+  .profile-tags{ justify-content:center; }
+  .profile-quote{ text-align:left; font-size:14px; }
+
+  /* Form */
+  .form-card{ padding:32px 20px; }
+  .form-title{ font-size:20px; }
+  .guarantee-row{ grid-template-columns:repeat(3,1fr); }
+
+  /* Float */
+  .float-wrap{ bottom:16px; right:14px; gap:8px; }
+  .f-kakao, .f-apply, .f-call{ font-size:12px; padding:11px 16px; }
+
+  /* Modal */
+  .modal-box{ padding:40px 24px; }
+}
+
+@media(max-width:400px){
+  .sol-grid{ grid-template-columns:1fr; }
+  .hero-title{ font-size:30px; }
+  .stats-inner{ grid-template-columns:repeat(2,1fr); gap:16px; }
+  .stat-num{ font-size:24px; }
+  .guarantee-row{ grid-template-columns:1fr; gap:8px; }
 }
 </style>
 </head>
-<body>
+<body onload="window.scrollTo(0,0);">
 
 <!-- HERO -->
 <section class="hero">
@@ -933,6 +989,14 @@ footer a{color:var(--gold-mid);text-decoration:none;}
 </div>
 
 <script>
+// 최초 접속 시 항상 최상단으로
+(function(){
+  if(window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+  window.scrollTo(0, 0);
+})();
+
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach((e,i) => {
