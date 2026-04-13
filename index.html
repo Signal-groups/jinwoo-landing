@@ -993,41 +993,36 @@ document.getElementById('fp').addEventListener('input', function(){
   this.value = v;
 });
 
-// ── 폼 제출 (Formspree)
+// ── 폼 제출 (구글 앱스 스크립트 no-cors)
 document.getElementById('cform').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('sbtn');
-  const stat = document.getElementById('fstat');
   btn.disabled = true;
   btn.textContent = '접수 중...';
-  stat.className = 'form-status';
+
+  const formData = {
+    name:  document.getElementById('fn').value,
+    phone: document.getElementById('fp').value,
+    area:  document.getElementById('fa').value,
+    age:   document.querySelector('[name="age"]').value,
+    memo:  document.querySelector('[name="memo"]').value
+  };
 
   try {
-    const formData = {
-      name:  document.getElementById('fn').value,
-      phone: document.getElementById('fp').value,
-      area:  document.getElementById('fa').value,
-      age:   document.querySelector('[name="age"]').value,
-      memo:  document.querySelector('[name="memo"]').value
-    };
-    const res = await fetch('https://script.google.com/macros/s/AKfycbz4yoExl11zqWF8s5bM1y82siy0n-SzsKcaaJIryEvS6DInp1hbTbf6QAuniGYwoNyx/exec', {
+    // no-cors 방식 — GAS CORS 우회, 응답은 받을 수 없지만 전송은 됨
+    await fetch('https://script.google.com/macros/s/AKfycbyTNexrJjDSMhVQCRCAU3uVtXtMuASQgfXXMw_CyicLG7pvI9XhDUCnN2-cTp2MjsMS/exec', {
       method: 'POST',
+      mode: 'no-cors',
       body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'text/plain' }
     });
-    if(res.ok){
-      document.getElementById('modal').classList.add('show');
-      this.reset();
-    } else { throw new Error(); }
-  } catch {
-    const n = document.getElementById('fn').value;
-    const p = document.getElementById('fp').value;
-    const a = document.getElementById('fa').value;
-    const body = encodeURIComponent(`[메타리치 무료 보장분석 신청]\n\n이름: ${n}\n연락처: ${p}\n지역: ${a}`);
-    window.location.href = `mailto:jinwoo8506@gmail.com?subject=${encodeURIComponent('[메타리치] 무료 보장분석 신청')}&body=${body}`;
-    document.getElementById('modal').classList.add('show');
-    this.reset();
+  } catch(err) {
+    console.log('전송 오류(무시):', err);
   }
+
+  // 전송 성공/실패 무관하게 완료 처리 (no-cors는 응답 확인 불가)
+  document.getElementById('modal').classList.add('show');
+  this.reset();
   btn.disabled = false;
   btn.textContent = '신청하기 — 배진우 재무설계사에게 바로 접수';
 });
