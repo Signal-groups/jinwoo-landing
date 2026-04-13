@@ -4,158 +4,275 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>내 보험 자가진단 | 배진우 재무설계사</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&family=Noto+Serif+KR:wght@700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pr:#2C5F8A;--prl:#3A7AB8;--prp:#EBF3FA;
-  --ac:#E8824A;
+  --pr:#2C5F8A;--prl:#3A7AB8;--prp:#EBF3FA;--prpp:#F5F9FD;
+  --ac:#E8824A;--acp:#FEF0E8;
   --gn:#2A8A5C;--gnp:#E8F5EE;
   --rd:#C0392B;--rdp:#FDEEEC;
-  --yw:#F0A500;--ywp:#FEF6E4;
-  --bg:#F4F6F9;--bg2:#ECEEF2;--wh:#FFFFFF;
-  --tx:#1E2530;--tx2:#4A5568;--tx3:#8A95A3;--bd:#DCE1E8;
-  --r:12px;--rl:18px;
+  --yw:#E8A200;--ywp:#FEF6E4;
+  --pu:#6B4FBB;--pup:#F0EDFB;
+  --bg:#F2F4F8;--bg2:#E8EBF0;--wh:#FFFFFF;
+  --tx:#18202E;--tx2:#485060;--tx3:#8892A0;--bd:#DDE2EA;
+  --r:14px;--rl:20px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;}
-.hdr{background:var(--wh);border-bottom:1px solid var(--bd);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.06);}
-.logo{font-size:14px;font-weight:700;color:var(--pr);}
+body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;}
+
+/* ── 타이포 ── */
+.sec-title{
+  font-family:'Montserrat','Noto Serif KR',sans-serif;
+  font-size:clamp(19px,4.5vw,24px);
+  font-weight:800;
+  color:var(--tx);
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--prp);
+  letter-spacing:-.01em;
+  line-height:1.3;
+}
+.sec-title em{font-style:normal;color:var(--pr);}
+.sec-title .en{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--pr);font-size:.95em;}
+
+/* ── HEADER ── */
+.hdr{background:var(--wh);border-bottom:1px solid var(--bd);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.logo{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:var(--pr);letter-spacing:.02em;}
 .logo span{color:var(--ac);}
-.prog{background:var(--wh);border-bottom:1px solid var(--bd);padding:10px 20px;position:sticky;top:53px;z-index:99;display:none;}
-.prog-in{max-width:680px;margin:0 auto;}
-.prog-row{display:flex;justify-content:space-between;font-size:11px;color:var(--tx3);margin-bottom:6px;}
-.prog-row strong{color:var(--pr);}
-.prog-bar{height:4px;background:var(--bg2);border-radius:100px;overflow:hidden;}
+.hdr-sub{font-size:12px;color:var(--tx3);}
+
+/* ── PROGRESS ── */
+.prog{background:var(--wh);border-bottom:1px solid var(--bd);padding:12px 20px;position:sticky;top:57px;z-index:99;display:none;}
+.prog-in{max-width:700px;margin:0 auto;}
+.prog-row{display:flex;justify-content:space-between;font-size:13px;color:var(--tx3);margin-bottom:8px;}
+.prog-row strong{color:var(--pr);font-weight:700;}
+.prog-bar{height:6px;background:var(--bg2);border-radius:100px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--pr),var(--prl));border-radius:100px;transition:width .3s;width:0%;}
-.hero{background:linear-gradient(135deg,var(--pr) 0%,var(--prl) 100%);padding:52px 20px 44px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=60') center/cover;opacity:.08;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1A3A5C 0%,var(--pr) 50%,var(--prl) 100%);padding:60px 20px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=60') center/cover;opacity:.07;}
 .hero-in{position:relative;z-index:1;max-width:600px;margin:0 auto;}
-.chip{display:inline-flex;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:11px;font-weight:700;letter-spacing:.15em;padding:5px 14px;border-radius:100px;margin-bottom:18px;}
-.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(24px,6vw,40px);font-weight:900;color:#fff;line-height:1.25;margin-bottom:12px;letter-spacing:-.02em;}
+.chip{display:inline-flex;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.9);font-size:11px;font-weight:700;letter-spacing:.18em;padding:7px 18px;border-radius:100px;margin-bottom:22px;text-transform:uppercase;}
+.hero h1{font-family:'Montserrat','Noto Serif KR',sans-serif;font-size:clamp(30px,7.5vw,52px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:6px;letter-spacing:-.02em;}
+.hero h1 .ko{font-family:'Noto Serif KR',serif;font-size:.85em;display:block;font-weight:900;}
 .hero h1 em{font-style:normal;color:#FFD580;}
-.hero p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:24px;}
-.hero-meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px;}
-.hm{font-size:12px;color:rgba(255,255,255,.65);}
-.hm strong{color:#fff;}
-.start-btn{background:#fff;color:var(--pr);font-size:16px;font-weight:700;padding:16px 44px;border-radius:var(--r);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.15);transition:transform .18s;}
-.start-btn:hover{transform:translateY(-2px);}
-.main{max-width:680px;margin:0 auto;padding:24px 20px 80px;}
-.slbl{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--wh);border-radius:var(--r);border-left:4px solid var(--pr);margin-bottom:12px;margin-top:28px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.hero-sub{font-size:clamp(14px,3vw,16px);color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:28px;margin-top:14px;}
+.hero-meta{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:30px;}
+.hm{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:5px;}
+.hm strong{color:#fff;font-weight:700;}
+.start-btn{background:#fff;color:var(--pr);font-size:17px;font-weight:700;padding:18px 52px;border-radius:var(--r);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.2);transition:transform .18s,box-shadow .18s;display:inline-block;letter-spacing:-.01em;}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.25);}
+.start-btn:active{transform:scale(.98);}
+
+/* ── MAIN ── */
+.main{max-width:700px;margin:0 auto;padding:28px 20px 100px;}
+
+/* ── SEC LABEL ── */
+.slbl{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--wh);border-radius:var(--r);border-left:4px solid var(--pr);margin-bottom:14px;margin-top:32px;box-shadow:0 1px 6px rgba(0,0,0,.05);}
 .slbl:first-child{margin-top:0;}
-.sico{width:36px;height:36px;border-radius:9px;background:var(--prp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.slbl-t{font-size:14px;font-weight:700;color:var(--pr);}
-.slbl-s{font-size:11px;color:var(--tx3);}
-.qc{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:20px 18px;margin-bottom:10px;transition:border-color .2s;}
+.sico{width:40px;height:40px;border-radius:10px;background:var(--prp);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.slbl-t{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--pr);letter-spacing:.01em;}
+.slbl-s{font-size:12px;color:var(--tx3);margin-top:2px;}
+
+/* ── Q CARD ── */
+.qc{background:var(--wh);border:2px solid var(--bd);border-radius:var(--r);padding:22px 20px;margin-bottom:12px;transition:border-color .2s;}
 .qc.done{border-color:var(--pr);}
-.qn{font-size:10px;font-weight:700;color:var(--tx3);letter-spacing:.1em;margin-bottom:7px;}
-.qt{font-size:14px;font-weight:600;color:var(--tx);line-height:1.6;margin-bottom:14px;}
-.qh{font-size:11px;color:var(--tx3);margin:-6px 0 12px;line-height:1.5;}
-.ox{display:flex;gap:8px;}
-.oxb{flex:1;padding:12px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);font-size:17px;font-weight:900;cursor:pointer;transition:all .15s;text-align:center;font-family:'Noto Sans KR',sans-serif;}
-.oxb:hover{border-color:var(--pr);background:var(--prp);}
+.qn{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:var(--tx3);letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase;}
+.qt{font-size:16px;font-weight:600;color:var(--tx);line-height:1.65;margin-bottom:18px;}
+.qh{font-size:13px;color:var(--tx3);margin:-10px 0 14px;line-height:1.6;background:var(--bg);padding:9px 13px;border-radius:9px;}
+
+/* ── OX ── */
+.ox{display:flex;gap:10px;}
+.oxb{flex:1;padding:16px;border-radius:12px;border:2px solid var(--bd);background:var(--bg);font-size:20px;font-weight:900;cursor:pointer;transition:all .15s;text-align:center;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;}
+.oxb:active{transform:scale(.97);}
 .oxb.so{border-color:var(--gn);background:var(--gnp);color:var(--gn);}
 .oxb.sx{border-color:var(--rd);background:var(--rdp);color:var(--rd);}
-.cw{display:flex;flex-direction:column;gap:7px;}
-.cb{padding:11px 14px;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;text-align:left;font-family:'Noto Sans KR',sans-serif;color:var(--tx);}
-.cb:hover{border-color:var(--pr);background:var(--prp);}
+
+/* ── CHOICE ── */
+.cw{display:flex;flex-direction:column;gap:9px;}
+.cb{padding:14px 16px;border-radius:12px;border:2px solid var(--bd);background:var(--bg);font-size:15px;font-weight:500;cursor:pointer;transition:all .15s;text-align:left;font-family:'Noto Sans KR',sans-serif;color:var(--tx);-webkit-tap-highlight-color:transparent;}
+.cb:active{transform:scale(.99);}
 .cb.sel{border-color:var(--pr);background:var(--prp);color:var(--pr);font-weight:700;}
-.sub-wrap{text-align:center;margin-top:32px;}
-.sub-btn{background:var(--pr);color:#fff;font-size:17px;font-weight:700;padding:18px 56px;border-radius:var(--r);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 6px 20px rgba(44,95,138,.3);transition:transform .18s;letter-spacing:-.01em;}
+
+/* ── SUBMIT ── */
+.sub-wrap{text-align:center;margin-top:36px;}
+.sub-btn{width:100%;background:linear-gradient(135deg,var(--pr),var(--prl));color:#fff;font-size:18px;font-weight:700;padding:20px;border-radius:var(--r);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;box-shadow:0 6px 20px rgba(44,95,138,.3);transition:transform .18s;letter-spacing:-.01em;}
 .sub-btn:hover{transform:translateY(-2px);}
-.sub-hint{font-size:12px;color:var(--tx3);margin-top:10px;}
-.rh-box{background:linear-gradient(135deg,var(--pr),var(--prl));border-radius:var(--rl);padding:40px 24px;text-align:center;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;}
-.rh-box::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=50') center/cover;opacity:.07;}
+.sub-btn:active{transform:scale(.98);}
+.sub-hint{font-size:13px;color:var(--tx3);margin-top:10px;}
+
+/* ── RESULT ── */
+.result-notice{background:linear-gradient(135deg,rgba(44,95,138,.08),rgba(58,122,184,.05));border:1.5px solid rgba(44,95,138,.18);border-radius:var(--r);padding:18px 20px;margin-bottom:18px;text-align:center;}
+.result-notice p{font-size:15px;color:var(--pr);line-height:1.8;font-weight:500;}
+.result-notice strong{font-weight:700;color:var(--pr);}
+
+.rh-box{background:linear-gradient(135deg,#1A3A5C,var(--pr),var(--prl));border-radius:var(--rl);padding:44px 24px;text-align:center;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;}
+.rh-box::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=50') center/cover;opacity:.06;}
 .rh-in{position:relative;z-index:1;}
-.sc-c{width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.15);border:4px solid rgba(255,255,255,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 18px;}
-.sc-n{font-size:48px;font-weight:900;line-height:1;color:#fff;}
-.sc-l{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;}
-.sc-t{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:900;margin-bottom:7px;}
-.sc-m{font-size:13px;color:rgba(255,255,255,.78);line-height:1.7;}
+.sc-c{width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.12);border:4px solid rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px;}
+.sc-n{font-family:'Montserrat',sans-serif;font-size:54px;font-weight:900;line-height:1;color:#fff;}
+.sc-l{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;}
+.sc-t{font-family:'Montserrat','Noto Serif KR',sans-serif;font-size:20px;font-weight:800;margin-bottom:8px;}
+.sc-m{font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;}
+
 .ag{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px;}
-.ai{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:12px 8px;text-align:center;}
-.ai-n{font-size:10px;color:var(--tx2);margin-bottom:4px;line-height:1.3;}
-.ai-p{font-size:20px;font-weight:800;color:var(--pr);}
-.ai-m{font-size:10px;color:var(--tx3);}
-.ansc{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:20px;margin-bottom:20px;}
-.ansc-t{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--bd);}
-.ar{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--bg2);font-size:12px;}
+.ai{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:14px 8px;text-align:center;}
+.ai-n{font-size:11px;color:var(--tx2);margin-bottom:5px;line-height:1.4;}
+.ai-p{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--pr);}
+.ai-m{font-size:11px;color:var(--tx3);}
+
+/* 아코디언 */
+.acc-wrap{background:var(--wh);border:2px solid var(--bd);border-radius:var(--r);margin-bottom:24px;overflow:hidden;}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--wh);border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:700;color:var(--pr);transition:background .18s;-webkit-tap-highlight-color:transparent;}
+.acc-btn:hover{background:var(--prp);}
+.acc-arrow{font-size:13px;transition:transform .3s;display:inline-block;color:var(--pr);}
+.acc-arrow.open{transform:rotate(180deg);}
+.acc-body{display:none;padding:4px 20px 18px;}
+.acc-body.open{display:block;}
+.ar{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bg2);font-size:14px;}
 .ar:last-child{border-bottom:none;}
-.aq{color:var(--tx2);flex:1;line-height:1.5;}
+.aq{color:var(--tx2);flex:1;line-height:1.55;}
 .aa{font-weight:700;flex-shrink:0;}
 .aa.ao{color:var(--gn);}
 .aa.ax{color:var(--rd);}
 .aa.ac{color:var(--pr);}
-.is{margin-bottom:24px;}
-.it{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:900;color:var(--tx);margin-bottom:12px;padding-bottom:9px;border-bottom:2px solid var(--prp);}
-.it em{font-style:normal;color:var(--pr);}
-.ic{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:18px;margin-bottom:10px;}
-.ich{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
-.ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
-.itt{font-size:13px;font-weight:700;color:var(--tx);}
-.isu{font-size:11px;color:var(--tx3);}
-.ib{font-size:12px;color:var(--tx2);line-height:1.85;}
-.ib p{margin-bottom:6px;}
+
+/* ── INFO COMMON ── */
+.is{margin-bottom:28px;}
+.ic{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:20px;margin-bottom:12px;}
+.ich{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.itt{font-size:15px;font-weight:700;color:var(--tx);}
+.isu{font-size:12px;color:var(--tx3);margin-top:2px;}
+.ib{font-size:14px;color:var(--tx2);line-height:1.9;}
+.ib p{margin-bottom:8px;}
 .ib p:last-child{margin-bottom:0;}
 .ib strong{color:var(--tx);font-weight:700;}
-.hl{background:var(--ywp);border-left:3px solid var(--yw);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0;font-size:12px;color:var(--tx2);}
-.wn{background:var(--rdp);border-left:3px solid var(--rd);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0;font-size:12px;color:#7B2020;}
-.gd{background:var(--gnp);border-left:3px solid var(--gn);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0;font-size:12px;color:#1A5C3A;}
-.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0;}
-.tbl th{background:var(--pr);color:#fff;padding:8px 10px;text-align:left;font-size:11px;font-weight:700;}
-.tbl td{padding:8px 10px;border-bottom:1px solid var(--bd);color:var(--tx2);font-size:12px;}
+.hl{background:var(--ywp);border-left:3px solid var(--yw);padding:10px 14px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px;color:var(--tx2);}
+.wn{background:var(--rdp);border-left:3px solid var(--rd);padding:10px 14px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px;color:#7B2020;}
+.gd{background:var(--gnp);border-left:3px solid var(--gn);padding:10px 14px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px;color:#1A5C3A;}
+.pu-box{background:var(--pup);border-left:3px solid var(--pu);padding:10px 14px;border-radius:0 9px 9px 0;margin:10px 0;font-size:14px;color:#3D2A7A;}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+.tbl th{background:var(--pr);color:#fff;padding:10px 12px;text-align:left;font-size:12px;font-weight:700;}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--bd);color:var(--tx2);}
 .tbl tr:last-child td{border-bottom:none;}
 .tbl td:first-child{font-weight:600;color:var(--tx);}
 .tb{color:var(--rd);font-weight:700;}
 .tg{color:var(--gn);font-weight:700;}
-.tl{display:flex;flex-direction:column;margin:8px 0;}
-.tli{display:flex;gap:10px;align-items:flex-start;}
-.tld{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--pr);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;position:relative;}
-.tld::after{content:'';position:absolute;top:24px;left:50%;transform:translateX(-50%);width:2px;height:20px;background:var(--bd);}
+.ty{color:var(--yw);font-weight:700;}
+
+/* ── TIMELINE ── */
+.tl{display:flex;flex-direction:column;margin:10px 0;}
+.tli{display:flex;gap:12px;align-items:flex-start;}
+.tld{width:26px;height:26px;border-radius:50%;flex-shrink:0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:3px;position:relative;}
+.tld::after{content:'';position:absolute;top:26px;left:50%;transform:translateX(-50%);width:2px;height:22px;background:var(--bd);}
 .tli:last-child .tld::after{display:none;}
-.tlc{padding-bottom:16px;flex:1;}
-.tlt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:2px;}
-.tldd{font-size:11px;color:var(--tx2);line-height:1.6;}
-.tlcs{display:inline-block;margin-top:3px;background:var(--ywp);color:var(--yw);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;}
-.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;}
-.rc{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:16px;}
-.rct{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
-.rci{font-size:18px;}
-.rctt{font-size:13px;font-weight:700;color:var(--tx);}
-.rcb{font-size:12px;color:var(--tx2);line-height:1.7;}
-.cta{background:linear-gradient(135deg,var(--pr),var(--prl));border-radius:var(--rl);padding:32px 20px;text-align:center;color:#fff;margin-top:24px;position:relative;overflow:hidden;}
-.cta::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=40') center/cover;opacity:.07;}
+.tlc{padding-bottom:18px;flex:1;}
+.tlt{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:3px;}
+.tldd{font-size:13px;color:var(--tx2);line-height:1.65;}
+.tlcs{display:inline-block;margin-top:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;}
+
+/* ── GRAPH (갱신형 비교) ── */
+.graph-wrap{margin:16px 0;}
+.graph-title{font-size:13px;font-weight:700;color:var(--tx2);margin-bottom:10px;text-align:center;}
+.bar-group{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:flex;align-items:center;gap:10px;}
+.bar-label{font-size:12px;color:var(--tx2);width:52px;flex-shrink:0;text-align:right;}
+.bar-track{flex:1;height:28px;background:var(--bg2);border-radius:6px;overflow:hidden;position:relative;}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;color:#fff;transition:width 1s ease;min-width:40px;}
+.bar-val{font-size:12px;font-weight:700;color:var(--tx);width:56px;flex-shrink:0;}
+.bar-renew{background:linear-gradient(90deg,#2A8A5C,#C0392B);}
+.bar-fixed{background:linear-gradient(90deg,var(--pr),var(--prl));}
+.graph-legend{display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--tx2);}
+.legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+
+.total-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.tc-card{border-radius:var(--r);padding:16px;text-align:center;}
+.tc-label{font-size:12px;font-weight:700;margin-bottom:6px;}
+.tc-amount{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;margin-bottom:4px;}
+.tc-sub{font-size:11px;opacity:.75;}
+
+/* ── 4대 리스크 ── */
+.rg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.rc{background:var(--wh);border:1.5px solid var(--bd);border-radius:var(--r);padding:18px 16px;}
+.rct{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.rci{font-size:20px;}
+.rctt{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--tx);}
+.rcb{font-size:13px;color:var(--tx2);line-height:1.75;}
+
+/* ── 간접비용 ── */
+.indirect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:12px;}
+.ind-item{background:var(--prp);border:1px solid rgba(44,95,138,.15);border-radius:10px;padding:12px;text-align:center;}
+.ind-icon{font-size:22px;margin-bottom:5px;}
+.ind-txt{font-size:12px;color:var(--pr);font-weight:600;line-height:1.4;}
+
+/* ── CTA ── */
+.cta{background:linear-gradient(135deg,#1A3A5C,var(--pr),var(--prl));border-radius:var(--rl);padding:36px 22px;text-align:center;color:#fff;margin-top:28px;position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=40') center/cover;opacity:.06;}
 .cta-in{position:relative;z-index:1;}
-.cta-bg{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:12px;}
-.cta-t{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;margin-bottom:7px;}
-.cta-d{font-size:13px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:20px;}
-.cta-bs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
-.cta-m{background:#fff;color:var(--pr);font-size:14px;font-weight:700;padding:13px 24px;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;transition:transform .18s;box-shadow:0 4px 14px rgba(0,0,0,.12);}
-.cta-m:hover{transform:translateY(-2px);}
-.cta-k{background:#FEE500;color:#111;font-size:14px;font-weight:700;padding:13px 22px;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;transition:transform .18s;}
-.cta-k:hover{transform:translateY(-2px);}
-.fl{position:fixed;bottom:22px;right:16px;z-index:999;display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
-.fb{display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:12px;padding:10px 16px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:transform .18s;white-space:nowrap;}
+.cta-bg{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:14px;letter-spacing:.08em;text-transform:uppercase;}
+.cta-t{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;letter-spacing:-.01em;}
+.cta-d{font-size:14px;color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:24px;}
+.cta-bs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.cta-btn{font-size:14px;font-weight:700;padding:15px 8px;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-family:'Noto Sans KR',sans-serif;transition:transform .18s;-webkit-tap-highlight-color:transparent;}
+.cta-btn:hover{transform:translateY(-2px);}
+.cta-btn:active{transform:scale(.97);}
+.cta-m{background:#fff;color:var(--pr);box-shadow:0 4px 14px rgba(0,0,0,.12);}
+.cta-k{background:#FEE500;color:#111;}
+.cta-tel{background:var(--gn);color:#fff;}
+.cta-ico{font-size:20px;}
+.cta-lbl{font-size:12px;line-height:1.3;}
+
+/* ── 플로팅 ── */
+.fl{position:fixed;bottom:24px;right:18px;z-index:999;display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.fb{display:flex;align-items:center;gap:7px;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:14px;padding:13px 20px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:transform .18s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
 .fb:hover{transform:translateY(-2px);}
-.fbk{background:#FEE500;color:#111;box-shadow:0 4px 14px rgba(254,229,0,.3);}
-.fba{background:var(--pr);color:#fff;box-shadow:0 4px 14px rgba(44,95,138,.3);}
-@media(max-width:600px){
-  .hero{padding:40px 16px 36px;}
-  .main{padding:18px 16px 80px;}
+.fb:active{transform:scale(.97);}
+.fb-tel{background:var(--gn);color:#fff;box-shadow:0 5px 18px rgba(42,138,92,.3);}
+.fb-k{background:#FEE500;color:#111;box-shadow:0 5px 18px rgba(254,229,0,.3);}
+.fb-a{background:var(--pr);color:#fff;box-shadow:0 5px 18px rgba(44,95,138,.3);}
+
+/* ── 모바일 ── */
+@media(max-width:480px){
+  body{font-size:15px;}
+  .hero{padding:48px 16px 42px;}
+  .main{padding:20px 14px 100px;}
+  .slbl{padding:14px 16px;}
+  .sico{width:36px;height:36px;font-size:18px;}
+  .qc{padding:18px 16px;}
+  .qt{font-size:15px;}
+  .oxb{padding:14px;font-size:19px;}
+  .cb{padding:13px 14px;font-size:14px;}
+  .sub-btn{font-size:17px;padding:18px;}
   .ag{grid-template-columns:repeat(3,1fr);gap:6px;}
-  .cta-bs{flex-direction:column;align-items:stretch;}
-  .cta-m,.cta-k{justify-content:center;}
-  .fl{bottom:14px;right:10px;}
+  .ai-p{font-size:19px;}
+  .rg{grid-template-columns:1fr;}
+  .cta-bs{grid-template-columns:1fr;gap:8px;}
+  .cta-btn{flex-direction:row;padding:15px 20px;font-size:15px;}
+  .cta-ico{font-size:18px;}
+  .cta-lbl{font-size:13px;}
+  .fl{bottom:16px;right:12px;gap:8px;}
+  .fb{font-size:13px;padding:12px 16px;}
+  .tbl{font-size:12px;}
+  .tbl th,.tbl td{padding:9px 10px;}
+  .indirect-grid{grid-template-columns:repeat(3,1fr);}
+  .total-compare{grid-template-columns:1fr 1fr;}
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 .fi{animation:fadeUp .5s ease both;}
+@keyframes barGrow{from{width:0%;}to{}}
 </style>
 </head>
 <body>
 
 <header class="hdr">
-  <div class="logo">META<span>RICH</span> 보험 자가진단</div>
-  <div style="font-size:11px;color:var(--tx3);">배진우 재무설계사</div>
+  <div class="logo">META<span>RICH</span></div>
+  <div class="hdr-sub">배진우 재무설계사 · 보험 자가진단</div>
 </header>
 
 <div class="prog" id="prog">
@@ -165,60 +282,64 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;
   </div>
 </div>
 
+<!-- HERO -->
 <div class="hero" id="hero-sec">
   <div class="hero-in fi">
-    <div class="chip">보험 자가진단 테스트</div>
-    <h1>당신의 보험은<br><em>"안녕"</em>하신가요?</h1>
-    <p>설계사의 말만 믿고 가입하신 건 아닌가요?<br>내가 보호하고자 하는 내용에 잘 맞춰져 있는지<br>지금 바로 확인해보세요.</p>
+    <div class="chip">Insurance Self Check</div>
+    <h1>
+      <span class="ko">당신의 보험은</span>
+      <em>"안녕"</em>하신가요?
+    </h1>
+    <p class="hero-sub">설계사의 말만 믿고 가입하신 건 아닌가요?<br>내가 보호하고자 하는 내용에 잘 맞춰져 있는지<br>지금 바로 확인해보세요.</p>
     <div class="hero-meta">
-      <div class="hm">소요시간 <strong>약 5분</strong></div>
-      <div class="hm">문항 수 <strong>26문항</strong></div>
-      <div class="hm">완전 <strong>무료</strong></div>
+      <div class="hm">⏱ 소요시간 <strong>약 5분</strong></div>
+      <div class="hm">📋 문항 수 <strong>26문항</strong></div>
+      <div class="hm">🆓 완전 <strong>무료</strong></div>
     </div>
     <button class="start-btn" onclick="startQ()">지금 바로 진단 시작하기 →</button>
   </div>
 </div>
 
+<!-- QUIZ -->
 <div id="qpage" style="display:none;">
 <div class="main">
+  <div class="slbl"><div class="sico">🛡️</div><div><div class="slbl-t">SECTION 1. 사망 대비</div><div class="slbl-s">20점 · Q1~Q4</div></div></div>
+  <div class="qc" id="q1"><div class="qn">Q 01</div><div class="qt">나에게 사망보험금이 있다</div><div class="ox"><button class="oxb" onclick="aox(1,'O',5)">O</button><button class="oxb" onclick="aox(1,'X',0)">X</button></div></div>
+  <div class="qc" id="q2"><div class="qn">Q 02</div><div class="qt">상속세 관련 문제에 보험이 활용될 수 있다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(2,'O',5)">O</button><button class="oxb" onclick="aox(2,'X',0)">X</button></div></div>
+  <div class="qc" id="q3"><div class="qn">Q 03</div><div class="qt">정기보험과 종신보험의 차이를 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(3,'O',5)">O</button><button class="oxb" onclick="aox(3,'X',0)">X</button></div></div>
+  <div class="qc" id="q4"><div class="qn">Q 04</div><div class="qt">내 사망보험금 수익자가 누구인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(4,'O',5)">O</button><button class="oxb" onclick="aox(4,'X',0)">X</button></div></div>
 
-  <div class="slbl"><div class="sico">🛡️</div><div><div class="slbl-t">영역 1. 사망 대비</div><div class="slbl-s">20점 · Q1~Q4</div></div></div>
-  <div class="qc" id="q1"><div class="qn">Q1</div><div class="qt">나에게 사망보험금이 있다</div><div class="ox"><button class="oxb" onclick="aox(1,'O',5)">O</button><button class="oxb" onclick="aox(1,'X',0)">X</button></div></div>
-  <div class="qc" id="q2"><div class="qn">Q2</div><div class="qt">상속세 관련 문제에 보험이 활용될 수 있다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(2,'O',5)">O</button><button class="oxb" onclick="aox(2,'X',0)">X</button></div></div>
-  <div class="qc" id="q3"><div class="qn">Q3</div><div class="qt">정기보험과 종신보험의 차이를 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(3,'O',5)">O</button><button class="oxb" onclick="aox(3,'X',0)">X</button></div></div>
-  <div class="qc" id="q4"><div class="qn">Q4</div><div class="qt">내 사망보험금 수익자가 누구인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(4,'O',5)">O</button><button class="oxb" onclick="aox(4,'X',0)">X</button></div></div>
+  <div class="slbl"><div class="sico">🏥</div><div><div class="slbl-t">SECTION 2. 치료비 대비</div><div class="slbl-s">25점 · Q5~Q9</div></div></div>
+  <div class="qc" id="q5"><div class="qn">Q 05</div><div class="qt">내 실손보험은 몇 세대인가요?</div><div class="cw"><button class="cb" onclick="ach(5,this,5)">1세대 (2009년 이전)</button><button class="cb" onclick="ach(5,this,5)">2세대 (2009~2017년)</button><button class="cb" onclick="ach(5,this,5)">3세대 (2017~2021년)</button><button class="cb" onclick="ach(5,this,5)">4세대 (2021년 이후)</button><button class="cb" onclick="ach(5,this,0)">모르겠다</button></div></div>
+  <div class="qc" id="q6"><div class="qn">Q 06</div><div class="qt">암 진단 후 통원치료 비용이 입원치료보다 더 많이 발생한다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(6,'O',5)">O</button><button class="oxb" onclick="aox(6,'X',0)">X</button></div></div>
+  <div class="qc" id="q7"><div class="qn">Q 07</div><div class="qt">진단비·수술비는 실손보험과 별개로 중복 수령이 가능하다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(7,'O',5)">O</button><button class="oxb" onclick="aox(7,'X',0)">X</button></div></div>
+  <div class="qc" id="q8"><div class="qn">Q 08</div><div class="qt">산정특례제도가 무엇인지 알고 있다</div><div class="qh">💡 암·희귀질환 등 중증질환자의 건강보험 본인부담을 줄여주는 제도</div><div class="ox"><button class="oxb" onclick="aox(8,'O',5)">O</button><button class="oxb" onclick="aox(8,'X',0)">X</button></div></div>
+  <div class="qc" id="q9"><div class="qn">Q 09</div><div class="qt">갱신형과 비갱신형 보험의 차이를 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(9,'O',5)">O</button><button class="oxb" onclick="aox(9,'X',0)">X</button></div></div>
 
-  <div class="slbl"><div class="sico">🏥</div><div><div class="slbl-t">영역 2. 치료비 대비</div><div class="slbl-s">25점 · Q5~Q9</div></div></div>
-  <div class="qc" id="q5"><div class="qn">Q5</div><div class="qt">내 실손보험은 몇 세대인가요?</div><div class="cw"><button class="cb" onclick="ach(5,this,5)">1세대 (2009년 이전)</button><button class="cb" onclick="ach(5,this,5)">2세대 (2009~2017년)</button><button class="cb" onclick="ach(5,this,5)">3세대 (2017~2021년)</button><button class="cb" onclick="ach(5,this,5)">4세대 (2021년 이후)</button><button class="cb" onclick="ach(5,this,0)">모르겠다</button></div></div>
-  <div class="qc" id="q6"><div class="qn">Q6</div><div class="qt">암 진단 후 통원치료 비용이 입원치료보다 더 많이 발생한다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(6,'O',5)">O</button><button class="oxb" onclick="aox(6,'X',0)">X</button></div></div>
-  <div class="qc" id="q7"><div class="qn">Q7</div><div class="qt">진단비·수술비는 실손보험과 별개로 중복 수령이 가능하다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(7,'O',5)">O</button><button class="oxb" onclick="aox(7,'X',0)">X</button></div></div>
-  <div class="qc" id="q8"><div class="qn">Q8</div><div class="qt">산정특례제도가 무엇인지 알고 있다</div><div class="qh">💡 암·희귀질환 등 중증질환자의 건강보험 본인부담을 줄여주는 제도</div><div class="ox"><button class="oxb" onclick="aox(8,'O',5)">O</button><button class="oxb" onclick="aox(8,'X',0)">X</button></div></div>
-  <div class="qc" id="q9"><div class="qn">Q9</div><div class="qt">갱신형과 비갱신형 보험의 차이를 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(9,'O',5)">O</button><button class="oxb" onclick="aox(9,'X',0)">X</button></div></div>
+  <div class="slbl"><div class="sico">💰</div><div><div class="slbl-t">SECTION 3. 노후 자금</div><div class="slbl-s">20점 · Q10~Q13</div></div></div>
+  <div class="qc" id="q10"><div class="qn">Q 10</div><div class="qt">연금보험 또는 연금저축이 있다</div><div class="ox"><button class="oxb" onclick="aox(10,'O',5)">O</button><button class="oxb" onclick="aox(10,'X',0)">X</button></div></div>
+  <div class="qc" id="q11"><div class="qn">Q 11</div><div class="qt">내 연금 예상 월 수령액을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(11,'O',5)">O</button><button class="oxb" onclick="aox(11,'X',0)">X</button></div></div>
+  <div class="qc" id="q12"><div class="qn">Q 12</div><div class="qt">국민연금 외에 개인연금을 별도로 준비하고 있다</div><div class="ox"><button class="oxb" onclick="aox(12,'O',5)">O</button><button class="oxb" onclick="aox(12,'X',0)">X</button></div></div>
+  <div class="qc" id="q13"><div class="qn">Q 13</div><div class="qt">연금 수령 시작 나이를 직접 설정해 본 적이 있다</div><div class="ox"><button class="oxb" onclick="aox(13,'O',5)">O</button><button class="oxb" onclick="aox(13,'X',0)">X</button></div></div>
 
-  <div class="slbl"><div class="sico">💰</div><div><div class="slbl-t">영역 3. 노후 자금 대비</div><div class="slbl-s">20점 · Q10~Q13</div></div></div>
-  <div class="qc" id="q10"><div class="qn">Q10</div><div class="qt">연금보험 또는 연금저축이 있다</div><div class="ox"><button class="oxb" onclick="aox(10,'O',5)">O</button><button class="oxb" onclick="aox(10,'X',0)">X</button></div></div>
-  <div class="qc" id="q11"><div class="qn">Q11</div><div class="qt">내 연금 예상 월 수령액을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(11,'O',5)">O</button><button class="oxb" onclick="aox(11,'X',0)">X</button></div></div>
-  <div class="qc" id="q12"><div class="qn">Q12</div><div class="qt">국민연금 외에 개인연금을 별도로 준비하고 있다</div><div class="ox"><button class="oxb" onclick="aox(12,'O',5)">O</button><button class="oxb" onclick="aox(12,'X',0)">X</button></div></div>
-  <div class="qc" id="q13"><div class="qn">Q13</div><div class="qt">연금 수령 시작 나이를 직접 설정해 본 적이 있다</div><div class="ox"><button class="oxb" onclick="aox(13,'O',5)">O</button><button class="oxb" onclick="aox(13,'X',0)">X</button></div></div>
+  <div class="slbl"><div class="sico">👴</div><div><div class="slbl-t">SECTION 4. 노후 의료비</div><div class="slbl-s">20점 · Q14~Q17</div></div></div>
+  <div class="qc" id="q14"><div class="qn">Q 14</div><div class="qt">치매·간병 관련 보험이 있다</div><div class="ox"><button class="oxb" onclick="aox(14,'O',5)">O</button><button class="oxb" onclick="aox(14,'X',0)">X</button></div></div>
+  <div class="qc" id="q15"><div class="qn">Q 15</div><div class="qt">내 실손보험이 80세 이후에도 유지되는지 확인해 봤다</div><div class="ox"><button class="oxb" onclick="aox(15,'O',5)">O</button><button class="oxb" onclick="aox(15,'X',0)">X</button></div></div>
+  <div class="qc" id="q16"><div class="qn">Q 16</div><div class="qt">노후 의료비로 월 얼마가 필요한지 생각해 본 적이 있다</div><div class="ox"><button class="oxb" onclick="aox(16,'O',5)">O</button><button class="oxb" onclick="aox(16,'X',0)">X</button></div></div>
+  <div class="qc" id="q17"><div class="qn">Q 17</div><div class="qt">CI보험이 일반 암·진단비 보험보다 보장 범위가 좁다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(17,'O',5)">O</button><button class="oxb" onclick="aox(17,'X',0)">X</button></div></div>
 
-  <div class="slbl"><div class="sico">👴</div><div><div class="slbl-t">영역 4. 노후 의료비 대비</div><div class="slbl-s">20점 · Q14~Q17</div></div></div>
-  <div class="qc" id="q14"><div class="qn">Q14</div><div class="qt">치매·간병 관련 보험이 있다</div><div class="ox"><button class="oxb" onclick="aox(14,'O',5)">O</button><button class="oxb" onclick="aox(14,'X',0)">X</button></div></div>
-  <div class="qc" id="q15"><div class="qn">Q15</div><div class="qt">내 실손보험이 80세 이후에도 유지되는지 확인해 봤다</div><div class="ox"><button class="oxb" onclick="aox(15,'O',5)">O</button><button class="oxb" onclick="aox(15,'X',0)">X</button></div></div>
-  <div class="qc" id="q16"><div class="qn">Q16</div><div class="qt">노후 의료비로 월 얼마가 필요한지 생각해 본 적이 있다</div><div class="ox"><button class="oxb" onclick="aox(16,'O',5)">O</button><button class="oxb" onclick="aox(16,'X',0)">X</button></div></div>
-  <div class="qc" id="q17"><div class="qn">Q17</div><div class="qt">CI보험이 일반 암·진단비 보험보다 보장 범위가 좁다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(17,'O',5)">O</button><button class="oxb" onclick="aox(17,'X',0)">X</button></div></div>
+  <div class="slbl"><div class="sico">🚗</div><div><div class="slbl-t">SECTION 5. 일상생활</div><div class="slbl-s">15점 · Q18~Q22</div></div></div>
+  <div class="qc" id="q18"><div class="qn">Q 18</div><div class="qt">자동차보험과 운전자보험이 서로 다른 보험이라는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(18,'O',3)">O</button><button class="oxb" onclick="aox(18,'X',0)">X</button></div></div>
+  <div class="qc" id="q19"><div class="qn">Q 19</div><div class="qt">민식이법(어린이보호구역 처벌 강화)에 대비한 운전자보험이 있다</div><div class="ox"><button class="oxb" onclick="aox(19,'O',3)">O</button><button class="oxb" onclick="aox(19,'X',0)">X</button></div></div>
+  <div class="qc" id="q20"><div class="qn">Q 20</div><div class="qt">내 화재보험에 누수 손해 보장이 포함되어 있다</div><div class="ox"><button class="oxb" onclick="aox(20,'O',3)">O</button><button class="oxb" onclick="aox(20,'X',0)">X</button></div></div>
+  <div class="qc" id="q21"><div class="qn">Q 21</div><div class="qt">일상배상책임보험이 무엇인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(21,'O',3)">O</button><button class="oxb" onclick="aox(21,'X',0)">X</button></div></div>
+  <div class="qc" id="q22"><div class="qn">Q 22</div><div class="qt">내 화재보험이 세입자용인지 집주인용인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(22,'O',3)">O</button><button class="oxb" onclick="aox(22,'X',0)">X</button></div></div>
 
-  <div class="slbl"><div class="sico">🚗</div><div><div class="slbl-t">영역 5. 일상생활 보장</div><div class="slbl-s">15점 · Q18~Q22</div></div></div>
-  <div class="qc" id="q18"><div class="qn">Q18</div><div class="qt">자동차보험과 운전자보험이 서로 다른 보험이라는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(18,'O',3)">O</button><button class="oxb" onclick="aox(18,'X',0)">X</button></div></div>
-  <div class="qc" id="q19"><div class="qn">Q19</div><div class="qt">민식이법(어린이보호구역 처벌 강화)에 대비한 운전자보험이 있다</div><div class="ox"><button class="oxb" onclick="aox(19,'O',3)">O</button><button class="oxb" onclick="aox(19,'X',0)">X</button></div></div>
-  <div class="qc" id="q20"><div class="qn">Q20</div><div class="qt">내 화재보험에 누수 손해 보장이 포함되어 있다</div><div class="ox"><button class="oxb" onclick="aox(20,'O',3)">O</button><button class="oxb" onclick="aox(20,'X',0)">X</button></div></div>
-  <div class="qc" id="q21"><div class="qn">Q21</div><div class="qt">일상배상책임보험이 무엇인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(21,'O',3)">O</button><button class="oxb" onclick="aox(21,'X',0)">X</button></div></div>
-  <div class="qc" id="q22"><div class="qn">Q22</div><div class="qt">내 화재보험이 세입자용인지 집주인용인지 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(22,'O',3)">O</button><button class="oxb" onclick="aox(22,'X',0)">X</button></div></div>
-
-  <div class="slbl" style="border-left-color:var(--ac);margin-top:28px;"><div class="sico" style="background:#FEF0E8;">🎯</div><div><div class="slbl-t" style="color:var(--ac);">보너스 문항</div><div class="slbl-s">Q23~Q26</div></div></div>
-  <div class="qc" id="q23"><div class="qn">Q23</div><div class="qt">실손보험은 여러 개 가입해도 중복 지급이 안 된다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(23,'O',5)">O</button><button class="oxb" onclick="aox(23,'X',0)">X</button></div></div>
-  <div class="qc" id="q24"><div class="qn">Q24</div><div class="qt">뇌출혈과 뇌혈관질환은 보험 보장 범위가 다르다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(24,'O',5)">O</button><button class="oxb" onclick="aox(24,'X',0)">X</button></div></div>
-  <div class="qc" id="q25"><div class="qn">Q25</div><div class="qt">건강보험·실손이 있어도 비급여·전액본인부담 항목은 보장이 안 된다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(25,'O',5)">O</button><button class="oxb" onclick="aox(25,'X',0)">X</button></div></div>
-  <div class="qc" id="q26"><div class="qn">Q26</div><div class="qt">보험을 마지막으로 점검(재설계)해 본 것이 3년 이내다</div><div class="ox"><button class="oxb" onclick="aox(26,'O',5)">O</button><button class="oxb" onclick="aox(26,'X',0)">X</button></div></div>
+  <div class="slbl" style="border-left-color:var(--ac);margin-top:32px;"><div class="sico" style="background:#FEF0E8;">🎯</div><div><div class="slbl-t" style="color:var(--ac);">BONUS</div><div class="slbl-s">Q23~Q26</div></div></div>
+  <div class="qc" id="q23"><div class="qn">Q 23</div><div class="qt">실손보험은 여러 개 가입해도 중복 지급이 안 된다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(23,'O',5)">O</button><button class="oxb" onclick="aox(23,'X',0)">X</button></div></div>
+  <div class="qc" id="q24"><div class="qn">Q 24</div><div class="qt">뇌출혈과 뇌혈관질환은 보험 보장 범위가 다르다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(24,'O',5)">O</button><button class="oxb" onclick="aox(24,'X',0)">X</button></div></div>
+  <div class="qc" id="q25"><div class="qn">Q 25</div><div class="qt">건강보험·실손이 있어도 비급여·전액본인부담 항목은 보장이 안 된다는 것을 알고 있다</div><div class="ox"><button class="oxb" onclick="aox(25,'O',5)">O</button><button class="oxb" onclick="aox(25,'X',0)">X</button></div></div>
+  <div class="qc" id="q26"><div class="qn">Q 26</div><div class="qt">보험을 마지막으로 점검(재설계)해 본 것이 3년 이내다</div><div class="ox"><button class="oxb" onclick="aox(26,'O',5)">O</button><button class="oxb" onclick="aox(26,'X',0)">X</button></div></div>
 
   <div class="sub-wrap">
     <button class="sub-btn" onclick="showR()">내 보험 점수 확인!</button>
@@ -227,8 +348,14 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;
 </div>
 </div>
 
+<!-- RESULT -->
 <div id="rpage" style="display:none;">
 <div class="main fi">
+
+  <div class="result-notice">
+    <p>내 상황에 맞게 잘 준비되어 있는지<br><strong>확인만 해보셔도 손해보지 않습니다.</strong><br>아래 결과를 보고 부족한 부분을 채워보세요.</p>
+  </div>
+
   <div class="rh-box">
     <div class="rh-in">
       <div class="sc-c"><div class="sc-n" id="fscore">0</div><div class="sc-l">/ 100점</div></div>
@@ -236,6 +363,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;
       <div class="sc-m" id="rmsg"></div>
     </div>
   </div>
+
   <div class="ag">
     <div class="ai"><div class="ai-n">사망대비</div><div class="ai-p" id="s1">0</div><div class="ai-m">/20</div></div>
     <div class="ai"><div class="ai-n">치료비</div><div class="ai-p" id="s2">0</div><div class="ai-m">/25</div></div>
@@ -243,10 +371,19 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;
     <div class="ai"><div class="ai-n">노후의료비</div><div class="ai-p" id="s4">0</div><div class="ai-m">/20</div></div>
     <div class="ai"><div class="ai-n">일상생활</div><div class="ai-p" id="s5">0</div><div class="ai-m">/15</div></div>
   </div>
-  <div class="ansc"><div class="ansc-t">📋 내 답변 요약</div><div id="alist"></div></div>
 
+  <!-- 답변 아코디언 -->
+  <div class="acc-wrap">
+    <button class="acc-btn" onclick="toggleAcc()">
+      <span>📋 내 답변 확인하기</span>
+      <span class="acc-arrow" id="acc-arrow">▼</span>
+    </button>
+    <div class="acc-body" id="acc-body"><div id="alist"></div></div>
+  </div>
+
+  <!-- 건강보험 한계 -->
   <div class="is">
-    <div class="it">건강보험·실손, <em>왜 만능이 아닌가요?</em></div>
+    <div class="sec-title">건강보험·실손, <em>왜 만능이 아닌가요?</em></div>
     <div class="ic">
       <div class="ich"><div class="ico" style="background:#EBF3FA;">🏛️</div><div><div class="itt">급여·비급여·전액본인부담의 차이</div><div class="isu">산정특례 대상도 비급여는 100% 본인 부담</div></div></div>
       <div class="ib">
@@ -257,94 +394,203 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Sans KR',sans-serif;
     </div>
   </div>
 
+  <!-- 암·뇌·심장 치료과정 -->
   <div class="is">
-    <div class="it">암 치료, <em>실제로 얼마가 들까요?</em></div>
+    <div class="sec-title"><em>3대 중증질환</em> 치료 과정과 준비 기준</div>
+
+    <!-- 암 -->
     <div class="ic">
-      <div class="ich"><div class="ico" style="background:#FDEEEC;">🎗️</div><div><div class="itt">암 치료 과정과 비용</div><div class="isu">통원치료 비용이 입원보다 훨씬 많습니다</div></div></div>
+      <div class="ich"><div class="ico" style="background:#FDEEEC;">🎗️</div><div><div class="itt">암 치료 과정</div><div class="isu">준비 기준: 최소 1년치 생활비 + 반복 항암치료(비급여) 대비</div></div></div>
       <div class="ib">
         <div class="tl">
-          <div class="tli"><div class="tld">1</div><div class="tlc"><div class="tlt">진단 단계</div><div class="tldd">조직검사·CT·MRI·PET 등 정밀 검사</div><div class="tlcs">50~200만원</div></div></div>
-          <div class="tli"><div class="tld">2</div><div class="tlc"><div class="tlt">수술</div><div class="tldd">로봇수술·복강경수술 등 비급여 비중 높음</div><div class="tlcs">300~1,500만원</div></div></div>
-          <div class="tli"><div class="tld">3</div><div class="tlc"><div class="tlt">항암치료 (통원 중심)</div><div class="tldd">표적치료제·면역항암제 1회 100~400만원</div><div class="tlcs">월 200~800만원</div></div></div>
-          <div class="tli"><div class="tld">4</div><div class="tlc"><div class="tlt">방사선 치료</div><div class="tldd">사이버나이프·양성자 치료 등</div><div class="tlcs">300~1,000만원</div></div></div>
-          <div class="tli"><div class="tld">5</div><div class="tlc"><div class="tlt">사후 관리 (통원)</div><div class="tldd">정기 검진·재발 방지 약물·면역치료</div><div class="tlcs">연 200~500만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#E8824A;">1</div><div class="tlc"><div class="tlt">진단 단계</div><div class="tldd">조직검사·CT·MRI·PET 등 정밀 검사</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">50~200만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#E8824A;">2</div><div class="tlc"><div class="tlt">수술</div><div class="tldd">로봇수술·복강경수술 등 비급여 비중 높음</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">300~1,500만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#C0392B;">3</div><div class="tlc"><div class="tlt">항암치료 (통원 중심)</div><div class="tldd">표적치료제·면역항암제 1회 100~400만원 — <strong>반복 지출</strong></div><div class="tlcs" style="background:var(--rdp);color:var(--rd);">월 200~800만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#E8824A;">4</div><div class="tlc"><div class="tlt">방사선 치료</div><div class="tldd">사이버나이프·양성자 치료 등 비급여 비중</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">300~1,000만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#2A8A5C;">5</div><div class="tlc"><div class="tlt">사후 관리 (통원)</div><div class="tldd">정기 검진·재발 방지 약물·면역치료 — <strong>장기 반복</strong></div><div class="tlcs" style="background:var(--gnp);color:var(--gn);">연 200~500만원</div></div></div>
         </div>
-        <div class="hl">💡 <strong>암 진단금은 3,000만원 이상</strong> 준비를 권장합니다.</div>
+        <div class="hl">💡 <strong>암 진단금 최소 권장: 연간 생활비 + 항암치료비</strong><br>예) 월 생활비 250만원 → 연 3,000만원 + 항암비 → <strong>총 5,000만원 이상 권장</strong></div>
+      </div>
+    </div>
+
+    <!-- 뇌혈관 -->
+    <div class="ic">
+      <div class="ich"><div class="ico" style="background:#FDEEEC;">🧠</div><div><div class="itt">뇌혈관질환 치료 과정</div><div class="isu">준비 기준: 최소 3~6개월 생활비 + 반복 재활치료비 대비</div></div></div>
+      <div class="ib">
+        <div class="tl">
+          <div class="tli"><div class="tld" style="background:#C0392B;">1</div><div class="tlc"><div class="tlt">응급 처치</div><div class="tldd">골든타임 4~6시간 내 혈전용해제·혈관내 치료</div><div class="tlcs" style="background:var(--rdp);color:var(--rd);">100~500만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#C0392B;">2</div><div class="tlc"><div class="tlt">입원 치료 (급성기)</div><div class="tldd">ICU 입원·수술·약물치료 (2~4주)</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">500~2,000만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#E8824A;">3</div><div class="tlc"><div class="tlt">재활 치료 (장기)</div><div class="tldd">언어·운동·인지재활 — <strong>수개월~수년간 반복</strong></div><div class="tlcs" style="background:var(--rdp);color:var(--rd);">월 100~300만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#2A8A5C;">4</div><div class="tlc"><div class="tlt">후유증 관리</div><div class="tldd">마비·언어장애 등 후유증 지속 치료 및 간병</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">월 50~200만원</div></div></div>
+        </div>
+        <div class="hl">💡 <strong>뇌혈관 진단금 최소 권장: 3~6개월 생활비 + 재활비</strong><br>예) 월 생활비 250만원 × 6개월 + 재활비 → <strong>총 3,000만원 이상 권장</strong></div>
+      </div>
+    </div>
+
+    <!-- 심장 -->
+    <div class="ic">
+      <div class="ich"><div class="ico" style="background:#FDEEEC;">❤️</div><div><div class="itt">심장질환 치료 과정</div><div class="isu">준비 기준: 최소 3~6개월 생활비 + 반복 시술·약물치료비 대비</div></div></div>
+      <div class="ib">
+        <div class="tl">
+          <div class="tli"><div class="tld" style="background:#C0392B;">1</div><div class="tlc"><div class="tlt">응급 처치·이송</div><div class="tldd">골든타임 4시간 내 처치 필수</div><div class="tlcs" style="background:var(--rdp);color:var(--rd);">50~200만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#C0392B;">2</div><div class="tlc"><div class="tlt">스텐트 시술 / 심장 수술</div><div class="tldd">관상동맥 중재시술, 심장우회수술 등</div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">500~3,000만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#E8824A;">3</div><div class="tlc"><div class="tlt">약물 치료 (장기)</div><div class="tldd">혈액 희석제·재발 방지 약물 — <strong>평생 복용 가능성</strong></div><div class="tlcs" style="background:var(--ywp);color:var(--yw);">월 5~30만원</div></div></div>
+          <div class="tli"><div class="tld" style="background:#2A8A5C;">4</div><div class="tlc"><div class="tlt">심장재활 프로그램</div><div class="tldd">운동·식이요법·심리치료 복합 재활</div><div class="tlcs" style="background:var(--gnp);color:var(--gn);">월 30~100만원</div></div></div>
+        </div>
+        <div class="hl">💡 <strong>심장질환 진단금 최소 권장: 3~6개월 생활비 + 수술비</strong><br>예) 월 생활비 250만원 × 6개월 + 수술비 → <strong>총 3,000만원 이상 권장</strong></div>
+      </div>
+    </div>
+
+    <!-- 공통 간접비용 -->
+    <div class="ic">
+      <div class="ich"><div class="ico" style="background:var(--ywp);">💸</div><div><div class="itt">공통 간접 비용 — 놓치기 쉬운 숨은 지출</div><div class="isu">직접 치료비 외에도 이만큼 더 필요합니다</div></div></div>
+      <div class="ib">
+        <div class="indirect-grid">
+          <div class="ind-item"><div class="ind-icon">🚗</div><div class="ind-txt">통원<br>교통비</div></div>
+          <div class="ind-item"><div class="ind-icon">🍱</div><div class="ind-txt">식사·<br>영양비</div></div>
+          <div class="ind-item"><div class="ind-icon">🥗</div><div class="ind-txt">건강<br>식단비</div></div>
+          <div class="ind-item"><div class="ind-icon">🦽</div><div class="ind-txt">의료<br>보조기</div></div>
+          <div class="ind-item"><div class="ind-icon">🧑‍⚕️</div><div class="ind-txt">간병<br>비용</div></div>
+          <div class="ind-item"><div class="ind-icon">🏡</div><div class="ind-txt">주거<br>환경 개조</div></div>
+        </div>
+        <div class="wn" style="margin-top:12px;">⚠️ 간접 비용만 <strong>월 50~200만원 추가 발생</strong>하는 경우가 많습니다. 진단금 산정 시 반드시 포함해야 합니다.</div>
       </div>
     </div>
   </div>
 
+  <!-- 뇌/심장 질병코드 -->
   <div class="is">
-    <div class="it">뇌·심장질환, <em>보장 범위가 다릅니다</em></div>
+    <div class="sec-title">뇌·심장질환, <em>보장 범위가 다릅니다</em></div>
     <div class="ic">
-      <div class="ich"><div class="ico" style="background:#FDEEEC;">🧠</div><div><div class="itt">뇌출혈 vs 뇌혈관질환 — 질병코드 차이</div><div class="isu">같은 뇌 질환도 보험금 지급 여부가 달라요</div></div></div>
+      <div class="ich"><div class="ico" style="background:#FDEEEC;">📋</div><div><div class="itt">질병코드에 따른 보장 범위 차이</div><div class="isu">같은 뇌 질환이라도 보험금 지급 여부가 달라요</div></div></div>
       <div class="ib">
-        <table class="tbl"><tr><th>구분</th><th>질병코드</th><th>보장 범위</th></tr><tr><td>뇌출혈</td><td>I60~I62</td><td class="tb">좁음</td></tr><tr><td>뇌졸중</td><td>I60~I63</td><td>중간</td></tr><tr><td>뇌혈관질환</td><td>I60~I69</td><td class="tg">넓음 ★ 권장</td></tr></table>
-        <div class="wn">⚠️ 오래된 보험은 뇌출혈만 보장 — 뇌경색으로 쓰러져도 보험금을 못 받는 경우가 있습니다.</div>
-        <table class="tbl" style="margin-top:10px;"><tr><th>구분</th><th>질병코드</th><th>보장 범위</th></tr><tr><td>급성심근경색</td><td>I21~I22</td><td class="tb">좁음</td></tr><tr><td>허혈성심장질환</td><td>I20~I25</td><td class="tg">넓음 ★ 권장</td></tr></table>
+        <table class="tbl"><tr><th>구분</th><th>질병코드</th><th>포함 범위</th><th>보장</th></tr><tr><td>뇌출혈</td><td>I60~I62</td><td>지주막하·뇌내출혈</td><td class="tb">좁음</td></tr><tr><td>뇌졸중</td><td>I60~I63</td><td>뇌출혈+뇌경색</td><td class="ty">중간</td></tr><tr><td>뇌혈관질환</td><td>I60~I69</td><td>뇌졸중+기타 전체</td><td class="tg">넓음 ★권장</td></tr></table>
+        <div class="wn">⚠️ 오래된 보험은 "뇌출혈"만 보장 — 뇌경색으로 쓰러져도 보험금을 못 받는 경우가 있습니다.</div>
+        <table class="tbl" style="margin-top:10px;"><tr><th>구분</th><th>질병코드</th><th>보장</th></tr><tr><td>급성심근경색</td><td>I21~I22</td><td class="tb">좁음</td></tr><tr><td>허혈성심장질환</td><td>I20~I25</td><td class="tg">넓음 ★권장</td></tr></table>
         <div class="gd">✅ 뇌혈관질환(I60~I69), 허혈성심장질환(I20~I25) 특약이 있는지 꼭 확인하세요!</div>
       </div>
     </div>
   </div>
 
+  <!-- 갱신형 vs 비갱신형 -->
   <div class="is">
-    <div class="it">보험으로 대비할 <em>4대 리스크 준비 기준</em></div>
-    <div class="rg">
-      <div class="rc" style="border-top:3px solid var(--rd);"><div class="rct"><div class="rci">💀</div><div class="rctt">사망</div></div><div class="rcb"><strong>준비 기준:</strong> 가족 생활비 × 10년치<br>정기보험으로 충분한 보장 확보</div></div>
-      <div class="rc" style="border-top:3px solid var(--ac);"><div class="rct"><div class="rci">🏥</div><div class="rctt">질병·상해</div></div><div class="rcb"><strong>준비 기준:</strong> 암 3,000만원↑<br>뇌·심장 각 2,000만원↑<br>실손 + 진단비 이중 대비</div></div>
-      <div class="rc" style="border-top:3px solid var(--yw);"><div class="rct"><div class="rci">💰</div><div class="rctt">노후 자금</div></div><div class="rcb"><strong>준비 기준:</strong> 개인연금 월 50만원↑<br>연금저축·IRP 세제 혜택 활용</div></div>
-      <div class="rc" style="border-top:3px solid var(--pr);"><div class="rct"><div class="rci">👴</div><div class="rctt">노후 의료비</div></div><div class="rcb"><strong>준비 기준:</strong> 간병보험 + 실손 100세 확인<br>치매·간병비 월 200만원↑</div></div>
-    </div>
-  </div>
+    <div class="sec-title"><em>갱신형</em> vs 비갱신형 — 진짜 비용 비교</div>
+    <div class="ic">
+      <div class="ich"><div class="ico" style="background:var(--rdp);">📈</div><div><div class="itt">40세 가입 · 90세까지 보장 기준 보험료 변화</div><div class="isu">초반엔 저렴하지만 갱신 후 유지가 불가능해질 수 있습니다</div></div></div>
+      <div class="ib">
+        <div class="graph-wrap">
+          <div class="graph-title">연령별 월 보험료 비교 (암·뇌·심장 기준)</div>
+          <div class="bar-group">
+            <div class="bar-row"><div class="bar-label">40세</div><div class="bar-track"><div class="bar-fill bar-renew" style="width:18%;">갱신</div></div><div class="bar-val">3.2만원</div></div>
+            <div class="bar-row"><div class="bar-label">50세</div><div class="bar-track"><div class="bar-fill bar-renew" style="width:32%;">갱신</div></div><div class="bar-val">5.8만원</div></div>
+            <div class="bar-row"><div class="bar-label">60세</div><div class="bar-track"><div class="bar-fill bar-renew" style="width:56%;">갱신</div></div><div class="bar-val">10.2만원</div></div>
+            <div class="bar-row"><div class="bar-label">70세</div><div class="bar-track"><div class="bar-fill bar-renew" style="width:80%;">갱신</div></div><div class="bar-val">14.6만원</div></div>
+            <div class="bar-row"><div class="bar-label">80세</div><div class="bar-track"><div class="bar-fill bar-renew" style="width:100%;">갱신</div></div><div class="bar-val">18.4만원</div></div>
+            <div style="height:10px;"></div>
+            <div class="bar-row"><div class="bar-label">40~90세</div><div class="bar-track"><div class="bar-fill bar-fixed" style="width:42%;">비갱신</div></div><div class="bar-val">7.6만원</div></div>
+          </div>
+          <div class="graph-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(90deg,#2A8A5C,#C0392B);"></div>갱신형 (나이 따라 증가)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(90deg,var(--pr),var(--prl));"></div>비갱신형 (고정)</div>
+          </div>
+        </div>
 
-  <div class="cta">
-    <div class="cta-in">
-      <div class="cta-bg" id="ctabg">내 점수: 0점</div>
-      <div class="cta-t" id="ctatt"></div>
-      <p class="cta-d" id="ctad"></p>
-      <div class="cta-bs">
-        <a href="https://jinwoo8506.github.io/jinwoo-landing" class="cta-m">무료 보장분석 신청하기</a>
-        <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="cta-k">카카오톡 상담</a>
+        <div class="total-compare">
+          <div class="tc-card" style="background:var(--rdp);">
+            <div class="tc-label" style="color:var(--rd);">갱신형 총 납입보험료</div>
+            <div class="tc-amount" style="color:var(--rd);">약 7,680만원</div>
+            <div class="tc-sub" style="color:var(--rd);">40~90세 (50년) 기준</div>
+          </div>
+          <div class="tc-card" style="background:var(--prp);">
+            <div class="tc-label" style="color:var(--pr);">비갱신형 총 납입보험료</div>
+            <div class="tc-amount" style="color:var(--pr);">약 4,560만원</div>
+            <div class="tc-sub" style="color:var(--pr);">40~90세 (50년) 기준</div>
+          </div>
+        </div>
+        <div class="wn" style="margin-top:12px;">⚠️ 갱신형은 50년간 갱신형이 비갱신형보다 약 <strong>3,120만원 더 납입</strong>하게 됩니다. 70~80대에 보험료가 너무 올라 <strong>유지를 포기하는 경우가 많습니다.</strong></div>
+        <div class="gd">✅ 비갱신형은 초반 보험료가 약간 높지만 <strong>평생 고정</strong>되어 예측 가능하고 장기 유지에 유리합니다.</div>
       </div>
     </div>
   </div>
+
+  <!-- CI보험 조건부 지급 -->
+  <div class="is">
+    <div class="sec-title"><em>CI보험</em>, 정말 보장이 될까요?</div>
+    <div class="ic">
+      <div class="ich"><div class="ico" style="background:var(--pup);">⚠️</div><div><div class="itt">CI보험 vs 일반 진단비 보험 — 지급 조건 비교</div><div class="isu">CI보험의 "중대한 암" 기준은 생각보다 훨씬 까다롭습니다</div></div></div>
+      <div class="ib">
+        <table class="tbl">
+          <tr><th>구분</th><th>일반 암보험</th><th>CI보험</th></tr>
+          <tr><td>암 인정 범위</td><td class="tg">대부분의 암</td><td class="tb">중대한 암만 인정</td></tr>
+          <tr><td>갑상선암</td><td class="tg">소액암으로 지급</td><td class="tb">해당 없음</td></tr>
+          <tr><td>초기 유방암</td><td class="tg">지급</td><td class="tb">대부분 미해당</td></tr>
+          <tr><td>전립선암 초기</td><td class="tg">지급</td><td class="tb">미해당 가능성 높음</td></tr>
+          <tr><td>지급 조건</td><td class="tg">진단 즉시</td><td class="tb">생존 기간 조건 등</td></tr>
+          <tr><td>보험료 수준</td><td class="tg">상대적으로 저렴</td><td class="tb">상대적으로 고가</td></tr>
+        </table>
+        <div class="wn">⚠️ CI보험에서 "중대한 암"으로 인정받는 비율은 전체 암 발생의 <strong>약 20~30% 수준</strong>으로 알려져 있습니다. 나머지 70~80%는 보험금을 받지 못할 수 있습니다.</div>
+        <div class="pu-box">💜 CI보험을 해지하기 전에 반드시 전문가와 상담하세요. 무조건 해지가 답이 아닐 수 있으며, <strong>특약 조정으로 보험료를 줄이는 방법</strong>이 있을 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4대 리스크 -->
+  <div class="is">
+    <div class="sec-title">보험으로 대비할 <em>4대 리스크 준비 기준</em></div>
+    <div class="rg">
+      <div class="rc" style="border-top:3px solid var(--rd);"><div class="rct"><div class="rci">💀</div><div class="rctt">사망</div></div><div class="rcb"><strong>준비 기준:</strong> 가족 생활비 × 10년치<br>정기보험으로 충분한 보장 확보</div></div>
+      <div class="rc" style="border-top:3px solid var(--ac);"><div class="rct"><div class="rci">🏥</div><div class="rctt">질병·상해</div></div><div class="rcb"><strong>암:</strong> 연 생활비 + 항암비<br><strong>뇌/심장:</strong> 3~6개월 생활비 + 치료비</div></div>
+      <div class="rc" style="border-top:3px solid var(--yw);"><div class="rct"><div class="rci">💰</div><div class="rctt">노후 자금</div></div><div class="rcb"><strong>준비 기준:</strong> 개인연금 월 50만원↑<br>연금저축·IRP 세제 혜택 활용</div></div>
+      <div class="rc" style="border-top:3px solid var(--pr);"><div class="rct"><div class="rci">👴</div><div class="rctt">노후 의료비</div></div><div class="rcb"><strong>준비 기준:</strong> 간병보험 + 실손 100세<br>치매·간병비 월 200만원↑</div></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-in">
+      <div class="cta-bg" id="ctabg">MY SCORE : 0점</div>
+      <div class="cta-t" id="ctatt"></div>
+      <p class="cta-d" id="ctad"></p>
+      <div class="cta-bs">
+        <a href="https://jinwoo8506.github.io/jinwoo-landing" class="cta-btn cta-m">
+          <span class="cta-ico">📋</span><span>무료 신청</span>
+        </a>
+        <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="cta-btn cta-k">
+          <span class="cta-ico">💬</span><span>카톡 상담</span>
+        </a>
+        <a href="tel:01034302565" class="cta-btn cta-tel">
+          <span class="cta-ico">📞</span><span>전화 상담</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 
+<!-- 플로팅 -->
 <div class="fl">
-  <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="fb fbk">카톡 상담</a>
-  <a href="https://jinwoo8506.github.io/jinwoo-landing" class="fb fba">무료 신청</a>
+  <a href="tel:01034302565" class="fb fb-tel">📞 전화 상담</a>
+  <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="fb fb-k">💬 카톡 상담</a>
+  <a href="https://jinwoo8506.github.io/jinwoo-landing" class="fb fb-a">📋 무료 신청</a>
 </div>
 
 <script>
-var A={}, SC={1:0,2:0,3:0,4:0,5:0}, ANS=0, TOTAL=26;
+var A={},SC={1:0,2:0,3:0,4:0,5:0},ANS=0,TOTAL=26;
 var QI=[
-  {n:1,a:1,t:"사망보험금 보유"},
-  {n:2,a:1,t:"상속세와 보험 활용 인지"},
-  {n:3,a:1,t:"정기/종신보험 차이 인지"},
-  {n:4,a:1,t:"사망보험금 수익자 인지"},
-  {n:5,a:2,t:"실손 세대"},
-  {n:6,a:2,t:"암 통원치료 비용 인지"},
-  {n:7,a:2,t:"진단비/수술비 중복수령 인지"},
-  {n:8,a:2,t:"산정특례제도 인지"},
-  {n:9,a:2,t:"갱신형/비갱신형 차이 인지"},
-  {n:10,a:3,t:"연금보험/연금저축 보유"},
-  {n:11,a:3,t:"연금 예상 수령액 인지"},
-  {n:12,a:3,t:"개인연금 별도 준비"},
-  {n:13,a:3,t:"연금 수령 나이 설정 경험"},
-  {n:14,a:4,t:"치매/간병보험 보유"},
-  {n:15,a:4,t:"실손 80세 이후 유지 확인"},
-  {n:16,a:4,t:"노후 의료비 필요액 인지"},
-  {n:17,a:4,t:"CI보험 보장 범위 인지"},
-  {n:18,a:5,t:"자동차/운전자보험 차이 인지"},
-  {n:19,a:5,t:"민식이법 대비 운전자보험"},
-  {n:20,a:5,t:"화재보험 누수 보장"},
-  {n:21,a:5,t:"일상배상책임보험 인지"},
-  {n:22,a:5,t:"화재보험 세입자/집주인 구분"},
-  {n:23,a:0,t:"실손 중복지급 불가 인지"},
-  {n:24,a:0,t:"뇌출혈/뇌혈관 보장 차이 인지"},
-  {n:25,a:0,t:"비급여/전액본인부담 한계 인지"},
-  {n:26,a:1,t:"3년 이내 보험 점검 경험"}
+  {n:1,a:1,t:"사망보험금 보유"},{n:2,a:1,t:"상속세와 보험 활용 인지"},
+  {n:3,a:1,t:"정기/종신보험 차이 인지"},{n:4,a:1,t:"사망보험금 수익자 인지"},
+  {n:5,a:2,t:"실손 세대"},{n:6,a:2,t:"암 통원치료 비용 인지"},
+  {n:7,a:2,t:"진단비/수술비 중복수령 인지"},{n:8,a:2,t:"산정특례제도 인지"},
+  {n:9,a:2,t:"갱신형/비갱신형 차이 인지"},{n:10,a:3,t:"연금보험/연금저축 보유"},
+  {n:11,a:3,t:"연금 예상 수령액 인지"},{n:12,a:3,t:"개인연금 별도 준비"},
+  {n:13,a:3,t:"연금 수령 나이 설정 경험"},{n:14,a:4,t:"치매/간병보험 보유"},
+  {n:15,a:4,t:"실손 80세 이후 유지 확인"},{n:16,a:4,t:"노후 의료비 필요액 인지"},
+  {n:17,a:4,t:"CI보험 보장 범위 인지"},{n:18,a:5,t:"자동차/운전자보험 차이 인지"},
+  {n:19,a:5,t:"민식이법 대비 운전자보험"},{n:20,a:5,t:"화재보험 누수 보장"},
+  {n:21,a:5,t:"일상배상책임보험 인지"},{n:22,a:5,t:"화재보험 세입자/집주인 구분"},
+  {n:23,a:0,t:"실손 중복지급 불가 인지"},{n:24,a:0,t:"뇌출혈/뇌혈관 보장 차이 인지"},
+  {n:25,a:0,t:"비급여/전액본인부담 한계 인지"},{n:26,a:1,t:"3년 이내 보험 점검 경험"}
 ];
 
 function startQ(){
@@ -353,105 +599,85 @@ function startQ(){
   document.getElementById('prog').style.display='block';
   window.scrollTo({top:0,behavior:'instant'});
 }
-
 function upProg(){
   var p=Math.round(ANS/TOTAL*100);
   document.getElementById('pfill').style.width=p+'%';
   document.getElementById('ptxt').textContent=ANS+' / '+TOTAL+' 문항';
   document.getElementById('ppct').textContent=p+'%';
 }
-
-function addSC(n,pt){
-  var ar=0;
-  for(var i=0;i<QI.length;i++){if(QI[i].n===n){ar=QI[i].a;break;}}
-  if(ar>0) SC[ar]=(SC[ar]||0)+pt;
+function getArea(n){for(var i=0;i<QI.length;i++){if(QI[i].n===n)return QI[i].a;}return 0;}
+function getPt(n,v){
+  var pts={1:5,2:5,3:5,4:5,6:5,7:5,8:5,9:5,10:5,11:5,12:5,13:5,14:5,15:5,16:5,17:5,18:3,19:3,20:3,21:3,22:3,23:5,24:5,25:5,26:5};
+  return v==='O'?(pts[n]||0):0;
 }
-
 function aox(n,v,pt){
-  if(A[n]!==undefined) return;
+  var was=A[n]!==undefined;
+  var prev=was?getPt(n,A[n]):0;
   A[n]=v;
   var c=document.getElementById('q'+n);
   var bs=c.querySelectorAll('.oxb');
   bs[0].className='oxb'+(v==='O'?' so':'');
   bs[1].className='oxb'+(v==='X'?' sx':'');
-  bs.forEach(function(b){b.style.pointerEvents='none';});
   c.classList.add('done');
-  addSC(n,pt);
-  ANS++;upProg();
+  var ar=getArea(n);
+  if(ar>0){SC[ar]=(SC[ar]||0)-prev+pt;if(SC[ar]<0)SC[ar]=0;}
+  if(!was){ANS++;upProg();}
 }
-
 function ach(n,btn,pt){
-  if(A[n]!==undefined) return;
+  var was=A[n]!==undefined;
+  var prev=was?(A[n]==='모르겠다'?0:5):0;
   A[n]=btn.textContent.trim();
-  btn.parentElement.querySelectorAll('.cb').forEach(function(b){b.style.pointerEvents='none';b.classList.remove('sel');});
+  btn.parentElement.querySelectorAll('.cb').forEach(function(b){b.classList.remove('sel');});
   btn.classList.add('sel');
   document.getElementById('q'+n).classList.add('done');
-  addSC(n,pt);
-  ANS++;upProg();
+  var ar=getArea(n);
+  if(ar>0){SC[ar]=(SC[ar]||0)-prev+pt;if(SC[ar]<0)SC[ar]=0;}
+  if(!was){ANS++;upProg();}
 }
-
+function toggleAcc(){
+  var b=document.getElementById('acc-body'),a=document.getElementById('acc-arrow');
+  b.classList.toggle('open');a.classList.toggle('open');
+}
 function showR(){
-  var tot=0;
-  for(var k in SC) tot+=SC[k];
-  tot=Math.min(tot,95);
+  var tot=0;for(var k in SC)tot+=SC[k];tot=Math.min(tot,95);
   document.getElementById('qpage').style.display='none';
   document.getElementById('rpage').style.display='block';
   document.getElementById('prog').style.display='none';
   window.scrollTo({top:0,behavior:'instant'});
-
   animN('fscore',tot);
-  animN('s1',Math.min(SC[1]||0,20));
-  animN('s2',Math.min(SC[2]||0,25));
-  animN('s3',Math.min(SC[3]||0,20));
-  animN('s4',Math.min(SC[4]||0,20));
-  animN('s5',Math.min(SC[5]||0,15));
-
+  animN('s1',Math.min(SC[1]||0,20));animN('s2',Math.min(SC[2]||0,25));
+  animN('s3',Math.min(SC[3]||0,20));animN('s4',Math.min(SC[4]||0,20));animN('s5',Math.min(SC[5]||0,15));
   var tt,mg,ct,cd;
   if(tot>=90){tt='보험 관리 우수';mg='기본기는 탄탄해요. 세부 점검으로 완성도를 높여보세요.';ct='마지막 점검으로 완성도를 높여보세요';cd='잘 준비되어 있지만 보장 공백이 없는지 전문가 확인을 받아보세요.';}
   else if(tot>=80){tt='대부분 준비됨';mg='잘 준비되어 있지만 놓친 부분이 있을 수 있어요.';ct='놓친 보장, 지금 확인해보세요';cd='일부 보장 공백이 있는 경우가 많아요. 무료로 확인해드립니다.';}
   else if(tot>=70){tt='점검이 필요합니다';mg='보장 공백이 보입니다. 지금 점검하시면 개선할 수 있어요.';ct='보장 공백이 발견됩니다';cd='중요한 보장이 빠져있을 가능성이 높아요. 지금 무료 점검을 받아보세요.';}
-  else if(tot>=60){tt='보완이 필요합니다';mg='중요한 보장이 빠져있을 가능성이 높습니다.';ct='중요한 보장이 빠져있습니다';cd='실제 위험 상황에서 보장받지 못할 가능성이 높아요. 지금 바로 확인하세요.';}
-  else{tt='즉시 점검이 필요합니다';mg='지금 당장 보험 점검이 필요합니다.';ct='지금 당장 보험 점검이 필요합니다';cd='사고·질병 시 보장을 거의 받지 못할 수 있어요. 무료 점검을 받아보세요.';}
-
+  else if(tot>=60){tt='보완이 필요합니다';mg='중요한 보장이 빠져있을 가능성이 높습니다.';ct='중요한 보장이 빠져있습니다';cd='실제 위험 상황에서 보장받지 못할 가능성이 높아요.';}
+  else{tt='즉시 점검이 필요합니다';mg='지금 당장 보험 점검이 필요합니다.';ct='지금 당장 보험 점검이 필요합니다';cd='사고·질병 시 보장을 거의 받지 못할 수 있어요.';}
   document.getElementById('rtitle').textContent=tt;
   document.getElementById('rmsg').textContent=mg;
-  document.getElementById('ctabg').textContent='내 점수: '+tot+'점';
+  document.getElementById('ctabg').textContent='MY SCORE : '+tot+'점';
   document.getElementById('ctatt').textContent=ct;
   document.getElementById('ctad').textContent=cd;
-
   var h='';
   for(var i=0;i<QI.length;i++){
-    var q=QI[i], av=A[q.n], at=av!==undefined?av:'미답변';
+    var q=QI[i],av=A[q.n],at=av!==undefined?av:'미답변';
     var cl=at==='O'?'ao':at==='X'?'ax':'ac';
     h+='<div class="ar"><div class="aq">Q'+q.n+'. '+q.t+'</div><div class="aa '+cl+'">'+at+'</div></div>';
   }
   document.getElementById('alist').innerHTML=h;
-
   var rows=[];
-  for(var j=0;j<QI.length;j++){
-    var qi=QI[j];
-    rows.push('Q'+qi.n+'('+qi.t+'):'+((A[qi.n]!==undefined)?A[qi.n]:'미답변'));
-  }
-  var d={
-    type:'자가진단',score:tot,
-    s1:Math.min(SC[1]||0,20),s2:Math.min(SC[2]||0,25),
-    s3:Math.min(SC[3]||0,20),s4:Math.min(SC[4]||0,20),s5:Math.min(SC[5]||0,15),
-    answers:rows.join(' | '),
-    date:new Date().toLocaleString('ko-KR')
-  };
+  for(var j=0;j<QI.length;j++){var qi=QI[j];rows.push('Q'+qi.n+'('+qi.t+'):'+((A[qi.n]!==undefined)?A[qi.n]:'미답변'));}
   fetch('https://script.google.com/macros/s/AKfycbyTNexrJjDSMhVQCRCAU3uVtXtMuASQgfXXMw_CyicLG7pvI9XhDUCnN2-cTp2MjsMS/exec',{
     method:'POST',mode:'no-cors',
-    body:JSON.stringify(d),
+    body:JSON.stringify({type:'자가진단',score:tot,s1:Math.min(SC[1]||0,20),s2:Math.min(SC[2]||0,25),s3:Math.min(SC[3]||0,20),s4:Math.min(SC[4]||0,20),s5:Math.min(SC[5]||0,15),answers:rows.join(' | '),date:new Date().toLocaleString('ko-KR')}),
     headers:{'Content-Type':'text/plain'}
   }).catch(function(){});
 }
-
 function animN(id,t){
   var e=document.getElementById(id),c=0,s=Math.ceil(t/25)||1;
   var tm=setInterval(function(){c=Math.min(c+s,t);e.textContent=c;if(c>=t)clearInterval(tm);},35);
 }
-
-if(history.scrollRestoration) history.scrollRestoration='manual';
+if(history.scrollRestoration)history.scrollRestoration='manual';
 window.scrollTo(0,0);
 </script>
 </body>
