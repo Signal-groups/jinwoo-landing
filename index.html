@@ -483,6 +483,18 @@ section{position:relative;}
 }
 .kakao-apply-btn:hover{opacity:.9;transform:translateY(-1px);}
 
+.call-apply-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:15px;
+  background:#E8F5E9;color:#1E8A4C;
+  font-weight:700;font-size:15px;
+  border:2px solid #1E8A4C;border-radius:10px;cursor:pointer;
+  margin-top:10px;text-decoration:none;
+  transition:background .2s,transform .2s;
+  font-family:'Pretendard',sans-serif;
+  letter-spacing:-.01em;
+}
+.call-apply-btn:hover{background:#C8E6C9;transform:translateY(-1px);}
 .or-line{
   display:flex;align-items:center;gap:12px;
   color:var(--text3);font-size:12px;margin:18px 0 4px;
@@ -546,7 +558,15 @@ footer a{color:var(--gold-mid);text-decoration:none;}
   text-decoration:none;transition:transform .2s,box-shadow .2s;
   animation:popUp .5s 1.4s ease both;
 }
-.f-kakao:hover,.f-apply:hover{transform:translateY(-2px) scale(1.04);}
+.f-call{
+  display:flex;align-items:center;gap:8px;
+  background:#1E8A4C;color:#fff;font-weight:700;font-size:13px;
+  padding:12px 20px;border-radius:100px;border:none;cursor:pointer;
+  box-shadow:0 6px 20px rgba(30,138,76,0.3);
+  text-decoration:none;transition:transform .2s,box-shadow .2s;
+  animation:popUp .5s 1.6s ease both;
+}
+.f-kakao:hover,.f-apply:hover,.f-call:hover{transform:translateY(-2px) scale(1.04);}
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
@@ -865,9 +885,12 @@ footer a{color:var(--gold-mid);text-decoration:none;}
 
       <div class="form-status" id="formStatus"></div>
 
-      <div class="or-line">또는 카카오톡으로 바로 상담</div>
+      <div class="or-line">또는 다른 방법으로 상담</div>
       <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="kakao-apply-btn">
         카카오톡 오픈채팅 바로가기
+      </a>
+      <a href="tel:01034302565" class="call-apply-btn">
+        전화 · 문자 상담 &nbsp; 010-3430-2565
       </a>
 
       <p class="privacy-note">입력하신 정보는 상담 목적으로만 사용되며 제3자에게 제공되지 않습니다</p>
@@ -894,6 +917,7 @@ footer a{color:var(--gold-mid);text-decoration:none;}
 
 <!-- FLOATING -->
 <div class="float-wrap">
+  <a href="tel:01034302565" class="f-call">전화·문자 상담</a>
   <a href="https://open.kakao.com/o/s4lMEawg" target="_blank" class="f-kakao">카톡 상담</a>
   <a href="#form" class="f-apply">무료 신청</a>
 </div>
@@ -938,7 +962,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const data = new FormData(this);
 
   try {
-    const res = await fetch('https://formspree.io/f/xpwzdpbk', {
+    const res = await fetch('https://formspree.io/f/myklgvnq', {
       method:'POST',
       body: data,
       headers:{ 'Accept':'application/json' }
