@@ -1011,23 +1011,43 @@ document.getElementById('fp').addEventListener('input', function(){
 });
 
 // ── 폼 제출 (구글 앱스 스크립트 no-cors)
+const PERSONAL_PROMO_NOTE = '개인 홍보';
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTNexrJjDSMhVQCRCAU3uVtXtMuASQgfXXMw_CyicLG7pvI9XhDUCnN2-cTp2MjsMS/exec';
+const TELEGRAM_BOT_TOKEN = '8652544241:AAEiwI3_qEnPGmgc8YluREw-LAjNBnXXaNo';
+const TELEGRAM_CHAT_ID = '8712434989';
+
+function buildTelegramMessage(data){
+  return [
+    '[인스타광고 신청]',
+    '메모: ' + PERSONAL_PROMO_NOTE,
+    '이름: ' + data.name,
+    '연락처: ' + data.phone,
+    '지역: ' + data.area,
+    '나이대: ' + (data.age || '-'),
+    '문의내용: ' + (data.userMemo || '-')
+  ].join('\n');
+}
+
 document.getElementById('cform').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('sbtn');
   btn.disabled = true;
   btn.textContent = '접수 중...';
 
+  const userMemo = document.querySelector('[name="memo"]').value.trim();
   const formData = {
     name:  document.getElementById('fn').value,
     phone: document.getElementById('fp').value,
     area:  document.getElementById('fa').value,
     age:   document.querySelector('[name="age"]').value,
-    memo:  document.querySelector('[name="memo"]').value
+    userMemo,
+    memo:  PERSONAL_PROMO_NOTE + (userMemo ? '\n' + userMemo : ''),
+    note:  PERSONAL_PROMO_NOTE
   };
 
   try {
     // no-cors 방식 — GAS CORS 우회, 응답은 받을 수 없지만 전송은 됨
-    await fetch('https://script.google.com/macros/s/AKfycbyTNexrJjDSMhVQCRCAU3uVtXtMuASQgfXXMw_CyicLG7pvI9XhDUCnN2-cTp2MjsMS/exec', {
+    await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       body: JSON.stringify(formData),
@@ -1038,6 +1058,19 @@ document.getElementById('cform').addEventListener('submit', async function(e){
   }
 
   // 전송 성공/실패 무관하게 완료 처리 (no-cors는 응답 확인 불가)
+  try {
+    const telegramData = new FormData();
+    telegramData.append('chat_id', TELEGRAM_CHAT_ID);
+    telegramData.append('text', buildTelegramMessage(formData));
+    await fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: telegramData
+    });
+  } catch(err) {
+    console.log('Telegram send error:', err);
+  }
+
   document.getElementById('modal').classList.add('show');
   this.reset();
   btn.disabled = false;
